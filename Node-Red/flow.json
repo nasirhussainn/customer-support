@@ -67,5 +67,67 @@
         "x": 610,
         "y": 220,
         "wires": []
+    },
+    {
+        "id": "1",
+        "type": "http in",
+        "z": "f7bbef49a8e5e040",
+        "name": "Get Tickets",
+        "url": "/get-tickets",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 60,
+        "y": 320,
+        "wires": [
+            [
+                "2"
+            ]
+        ]
+    },
+    {
+        "id": "2",
+        "type": "file in",
+        "z": "f7bbef49a8e5e040",
+        "name": "Read Tickets File",
+        "filename": "D:\\Angular full course\\customer-support\\Data\\ticket.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "sendError": true,
+        "allProps": false,
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "3"
+            ]
+        ]
+    },
+    {
+        "id": "3",
+        "type": "json",
+        "z": "f7bbef49a8e5e040",
+        "name": "Parse JSON",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "4"
+            ]
+        ]
+    },
+    {
+        "id": "4",
+        "type": "http response",
+        "z": "f7bbef49a8e5e040",
+        "name": "Send Tickets",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 320,
+        "wires": []
     }
 ]
