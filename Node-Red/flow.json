@@ -1,0 +1,71 @@
+[
+    {
+        "id": "a1b2c3d4e5",
+        "type": "http in",
+        "z": "f7bbef49a8e5e040",
+        "name": "Ticket Submission API",
+        "url": "/submit-ticket",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "validate-data"
+            ]
+        ]
+    },
+    {
+        "id": "validate-data",
+        "type": "function",
+        "z": "f7bbef49a8e5e040",
+        "name": "Validate Data",
+        "func": "const ticket = msg.payload;\nif (!ticket.name || !ticket.email || !ticket.description) {\n    msg.statusCode = 400;\n    msg.payload = { error: 'Missing required fields: name, email, or description.' };\n    return [null, msg];\n}\n\nmsg.payload = {\n    id: Date.now(),\n    name: ticket.name,\n    email: ticket.email,\n    description: ticket.description,\n    status: 'Open',\n    timestamp: new Date().toISOString()\n};\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "save-ticket",
+                "http response"
+            ],
+            [
+                "http response"
+            ]
+        ]
+    },
+    {
+        "id": "save-ticket",
+        "type": "file",
+        "z": "f7bbef49a8e5e040",
+        "name": "Save Ticket to File",
+        "filename": "D:\\Angular full course\\customer-support\\Data\\ticket.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 580,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "http response",
+        "type": "http response",
+        "z": "f7bbef49a8e5e040",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 220,
+        "wires": []
+    }
+]
