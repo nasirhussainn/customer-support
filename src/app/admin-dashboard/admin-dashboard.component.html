@@ -1,0 +1,50 @@
+<div class="container mt-4">
+    <h2>Admin Dashboard</h2>
+    
+    <!-- Check if tickets data exists -->
+    <div *ngIf="tickets && tickets.length > 0">
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ticket of tickets; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ ticket.name }}</td>
+            <td>{{ ticket.email }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>
+              <button
+                class="btn btn-sm btn-success"
+                *ngIf="ticket.status === 'Open'"
+                (click)="updateStatus(ticket, 'In Progress')"
+              >
+                Mark as In Progress
+              </button>
+              <button
+                class="btn btn-sm btn-primary"
+                *ngIf="ticket.status === 'In Progress'"
+                (click)="updateStatus(ticket, 'Resolved')"
+              >
+                Mark as Resolved
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Display message if no tickets found -->
+    <div *ngIf="!tickets || tickets.length === 0">
+      <p>No tickets found.</p>
+    </div>
+  </div>
+  

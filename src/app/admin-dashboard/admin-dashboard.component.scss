@@ -1,0 +1,127 @@
+// Main container styling
+.container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  
+  // Heading Styling
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  // Table Styling
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  
+    th, td {
+      padding: 15px;
+      text-align: left;
+      font-size: 1rem;
+      color: #555;
+    }
+  
+    th {
+      background-color: #007bff;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+  
+    td {
+      font-weight: 500;
+      color: #333;
+    }
+  }
+  
+  // Button Styling
+  button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  
+    &.btn-success {
+      background-color: #28a745;
+      color: white;
+  
+      &:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+      }
+    }
+  
+    &.btn-primary {
+      background-color: #007bff;
+      color: white;
+  
+      &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+    }
+  
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  
+  // "No Ticket Found" message styling
+  .no-ticket-message {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 2rem;
+  }
+  
+  // Responsive Design for smaller screens
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .table {
+      font-size: 0.875rem;
+  
+      th, td {
+        padding: 12px;
+      }
+    }
+  
+    button {
+      font-size: 0.75rem;
+    }
+  }
+  
+  
