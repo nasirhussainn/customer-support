@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Submit a Support Ticket</h2>
+    <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          required
+          [(ngModel)]="ticket.name"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          required
+          [(ngModel)]="ticket.email"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Issue Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          rows="5"
+          required
+          [(ngModel)]="ticket.description"
+        ></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  
+    <div *ngIf="responseMessage" class="alert alert-success mt-3">
+      {{ responseMessage }}
+    </div>
+  </div>
+  
